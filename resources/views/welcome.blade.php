@@ -8,27 +8,21 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    {{-- AlpineJS --}}
+    <script src="//unpkg.com/alpinejs"></script>
+    {{-- VanillaJS --}}
+    {{-- <script src="/js/app.js"></script> --}}
 </head>
 
 <body>
-    <div id="game">
-        {{-- <div class="row">
-            <div class="tile">x</div>
-            <div class="tile">x</div>
-            <div class="tile">x</div>
-        </div>
-
-        <div class="row">
-            <div class="tile">x</div>
-            <div class="tile">x</div>
-            <div class="tile">x</div>
-        </div>
-
-        <div class="row">
-            <div class="tile">x</div>
-            <div class="tile">x</div>
-            <div class="tile">x</div>
-        </div> --}}
+    <div id="game" x-data="{ guessesAllowed: 4, wordLength: 3 }">
+        <template x-for="row in Array.from({ length: guessesAllowed })">
+            <div class="row">
+                <template x-for="tile in Array.from({ length: wordLength })">
+                    <div class="tile"></div>
+                </template>
+            </div>
+        </template>
     </div>
 </body>
 

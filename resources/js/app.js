@@ -7,27 +7,27 @@ let guessesAllowed = 3;
 let wordLength = 3;
 
 
-// Generate 3 rows
-let fragment = document.createDocumentFragment();
+// // Generate 3 rows
+// let fragment = document.createDocumentFragment();
 
-let generateGrid = () => {
-    Array.from({ length: guessesAllowed }).forEach(() => {
-        let row = document.createElement('div');
-        row.classList.add('row');
+// let generateGrid = () => {
+//     Array.from({ length: guessesAllowed }).forEach(() => {
+//         let row = document.createElement('div');
+//         row.classList.add('row');
     
-        Array.from({ length: wordLength }).forEach(() => {
-            let tile = document.createElement('div');
-            tile.classList.add('tile');
+//         Array.from({ length: wordLength }).forEach(() => {
+//             let tile = document.createElement('div');
+//             tile.classList.add('tile');
     
-            row.appendChild(tile);
-        })
+//             row.appendChild(tile);
+//         })
     
-        fragment.appendChild('row');
-    });
+//         fragment.appendChild('row');
+//     });
     
     
-    grid.appendChild(fragment);
-}
+//     grid.appendChild(fragment);
+// }
 
-// Initialize
-generateGrid();
+// // Initialize
+// generateGrid();
