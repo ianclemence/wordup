@@ -29,6 +29,19 @@ body {
     font-size: 2rem;
 }
 
+.tile.absent {
+    background: #666;
+}
+
+.tile.present {
+    background: yellow;
+    color: black;
+}
+
+.tile.correct {
+    background: green;
+}
+
 output {
     font-size: 1.3rem;
     text-align: center;
