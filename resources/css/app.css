@@ -28,3 +28,13 @@ body {
     outline: 1px solid currentColor;
     font-size: 2rem;
 }
+
+output {
+    font-size: 1.3rem;
+    text-align: center;
+    display: block;
+    margin-top: 1.5rem;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+}
