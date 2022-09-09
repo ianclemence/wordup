@@ -9,21 +9,26 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     {{-- AlpineJS --}}
-    <script src="//unpkg.com/alpinejs"></script>
-    {{-- VanillaJS --}}
-    {{-- <script src="/js/app.js"></script> --}}
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
 <body>
-    <div id="game" x-data="{ guessesAllowed: 4, wordLength: 3 }">
-        <template x-for="row in Array.from({ length: guessesAllowed })">
-            <div class="row">
-                <template x-for="tile in Array.from({ length: wordLength })">
-                    <div class="tile"></div>
-                </template>
-            </div>
-        </template>
-    </div>
+    <main  
+        x-data="game"
+        @keyup.window="onKeyPress($event.key)"
+    >
+        <div id="game">
+            <template x-for="row in board">
+                <div class="row">
+                    <template x-for="tile in row">
+                        <div class="tile" x-text="tile.letter"></div>
+                    </template>
+                </div>
+            </template>
+        </div>
+
+        <output x-text="message"></output>
+    </main>
 </body>
 
 </html>
