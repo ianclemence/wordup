@@ -1,10 +1,12 @@
 import Tile from "./Tile";
+import words from "./words3";
 
 export default {
     guessesAllowed: 3,
     theWord: "cat", // to-do
     currentRowIndex: 0,
     state: "active", // pending, active, complete
+    errors: false,
     message: "",
 
     get currentRow() {
@@ -16,20 +18,21 @@ export default {
     },
 
     get remainingGuesses() {
-        return this.guessesAllowed - this.currentRowIndex - 1
+        return this.guessesAllowed - this.currentRowIndex - 1;
     },
 
     init() {
         this.board = Array.from({ length: this.guessesAllowed }, () => {
             return Array.from(
                 { length: this.theWord.length },
-                () => new Tile()
+                (item, index) => new Tile(index)
             );
         });
     },
 
     onKeyPress(key) {
         this.message = "";
+        this.errors = false;
 
         // Validation
         if (/^[A-z]$/.test(key)) {
@@ -61,6 +64,7 @@ export default {
         }
     },
 
+    // async submitGuess() {
     submitGuess() {
         // if the guess length is less than the guess of the word
         if (this.currentGuess.length < this.theWord.length) {
@@ -68,25 +72,36 @@ export default {
             return;
         }
 
-        // Update the tile colors
-        for (let tile of this.currentRow) {
-            tile.updateStatus(this.currentGuess, this.theWord);  
+        if (!words.includes(this.currentGuess.toUpperCase())) {
+            this.errors = true;
+
+            return (this.message = "Not a Word");
         }
+
+        // Using a dictionary API
+        // if (await this.checkDictionary(this.currentGuess)) {
+        //     this.errors = true;
+
+        //     return this.message = "Not a Word";
+        // }
+
+        // Update the tile colors
+        Tile.updateStatusesForRow(this.currentRow, this.theWord);
 
         if (this.currentGuess === this.theWord) {
             this.state = "complete";
 
-            return this.message = "You Win!";
+            return (this.message = "You Win!");
         }
-        
+
         if (this.remainingGuesses === 0) {
             this.state = "complete";
 
-            return this.message = "Game Over. You Lose!";
+            return (this.message = "Game Over. You Lose!");
         }
 
         this.currentRowIndex++;
 
-        return this.message = "Incorrect!";
+        return (this.message = "Incorrect!");
     },
 };
