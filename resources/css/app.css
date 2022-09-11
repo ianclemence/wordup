@@ -73,19 +73,6 @@ h1 {
     color: #496e9e;
 }
 
-#keyboard {
-    margin-top: 2rem;
-}
-
- .key {
-    background: #c5c5c5;
-    border: 0;
-    margin: 2px;
-    height: 50px;
-    min-width: 40px;
-    border-radius: 4px;
-}
-
 .row.invalid .tile, .tile.invalid {
     color: var(--invalid-color);
     text-shadow: 0 0 12px rgba(246, 38, 38, 0.42);
@@ -127,7 +114,32 @@ output {
     inset: auto 0 3rem 0;
 }
 
+/* output {
+    display: block;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 17px;
+    margin-top: 1rem;
+    position: absolute;
+    top: 0;
+    right: -5.5rem;
+    width: 150px;
+} */
+
 output:empty {
     display: none;
     color: #496e9e;
+}
+
+#keyboard {
+    margin: 2rem 0;
+}
+
+.key {
+    background: #c5c5c5;
+    border: 0;
+    border-radius: 4px;
+    height: 50px;
+    min-width: 40px;
+    margin: 2px;
 }
