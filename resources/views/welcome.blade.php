@@ -41,7 +41,8 @@
                     <template x-for="key in row">
                         <button 
                             type="button" 
-                            class="key" 
+                            class="key"
+                            :class="matchingTileForKey(key)?.status" 
                             x-text="key"
                         >
                         </button>
