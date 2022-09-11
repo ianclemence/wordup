@@ -7,14 +7,14 @@ export default class Tile {
     }
 
     static updateStatusesForRow(row, theWord) {
-        theWord = theWord.split(''); // ['c', 'a', 't']
+        theWord = theWord.split(""); // ['c', 'a', 't']
         // check for correct letters
         for (let tile of row) {
             if (theWord[tile.position] === tile.letter) {
                 tile.status = "correct";
 
                 theWord[tile.position] = null;
-            }            
+            }
         }
 
         // check for present letters
@@ -23,12 +23,12 @@ export default class Tile {
                 tile.status = "present";
 
                 theWord[theWord.indexOf(tile.letter)] = null;
-            }            
+            }
         }
 
         // anything that remains is absent
         for (let tile of row.filter((tile) => !tile.status)) {
-            tile.status = "absent";           
+            tile.status = "absent";
         }
     }
 
