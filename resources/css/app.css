@@ -5,7 +5,8 @@
     --invalid-color: #ff3f3f;
 }
 
-html, body {
+html,
+body {
     height: 100%;
 }
 
@@ -73,7 +74,8 @@ h1 {
     color: #496e9e;
 }
 
-.row.invalid .tile, .tile.invalid {
+.row.invalid .tile,
+.tile.invalid {
     color: var(--invalid-color);
     text-shadow: 0 0 12px rgba(246, 38, 38, 0.42);
 }
