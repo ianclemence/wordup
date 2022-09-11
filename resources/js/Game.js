@@ -1,18 +1,19 @@
 import Tile from "./Tile";
-import words from "./words3";
+import {allWords, secretWords} from "./words3";
 
 export default {
-    guessesAllowed: 3,
-    theWord: "cat", // to-do
+    guessesAllowed: 4,
+    theWord: secretWords[Math.floor(Math.random() * secretWords.length)], // specifis words
+    // theWord: allWords[Math.floor(Math.random() * allWords.length)], // random words
     currentRowIndex: 0,
     state: "active", // pending, active, complete
     errors: false,
     message: "",
 
     letters: [
-        'QWERTYUIOP'.split(''),
-        'ASDFGHJKL'.split(''),
-        ['Enter',...'ZXCVBNM'.split(''),'Backspace'],
+        "QWERTYUIOP".split(""),
+        "ASDFGHJKL".split(""),
+        ["Enter", ..."ZXCVBNM".split(""), "Backspace"],
     ],
 
     get currentRow() {
@@ -40,8 +41,8 @@ export default {
         return this.board
             .flat()
             .filter((tile) => tile.status)
-            .sort((t1, t2) =>(t2.status === 'correct') ? 1 : -1)
-            .find(tile => tile.letter === key.toLowerCase());
+            .sort((t1, t2) => (t2.status === "correct" ? 1 : -1))
+            .find((tile) => tile.letter === key.toLowerCase());
     },
 
     onKeyPress(key) {
@@ -86,10 +87,12 @@ export default {
             return;
         }
 
-        if (!words.includes(this.currentGuess.toUpperCase())) {
+        if (!allWords.includes(this.currentGuess.toUpperCase())) {
             this.errors = true;
 
-            return (this.message = "Not a Word");
+            this.message = "Not a Word";
+
+            return;
         }
 
         // Using a dictionary API
@@ -104,18 +107,13 @@ export default {
 
         if (this.currentGuess === this.theWord) {
             this.state = "complete";
-
-            return (this.message = "You Win!");
-        }
-
-        if (this.remainingGuesses === 0) {
+            this.message = "You Win!";
+        } else if (this.remainingGuesses === 0) {
             this.state = "complete";
-
-            return (this.message = "Game Over. You Lose!");
+            this.message = `Game Over. You Lose! (${this.theWord})`;
+        } else {
+            this.currentRowIndex++;
+            this.message = "Incorrect!";
         }
-
-        this.currentRowIndex++;
-
-        return (this.message = "Incorrect!");
     },
 };
