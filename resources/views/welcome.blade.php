@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,17 +18,15 @@
 </head>
 
 <body>
-    <main  
-        x-data="game"
-        @keyup.window="onKeyPress($event.key)"
-    >
+    <main x-data="game" @keyup.window="onKeyPress($event.key)">
         <h1>
             WordUp
         </h1>
         <output x-text="message"></output>
         <div id="game">
             <template x-for="(row, index) in board">
-                <div class="row" :class="{'current' : currentRowIndex === index, 'invalid': currentRowIndex === index && errors }">
+                <div class="row"
+                    :class="{ 'current': currentRowIndex === index, 'invalid': currentRowIndex === index && errors }">
                     <template x-for="tile in row">
                         <div class="tile" :class="tile.status" x-text="tile.letter"></div>
                     </template>
@@ -39,12 +38,7 @@
             <template x-for="row in letters">
                 <div class="row">
                     <template x-for="key in row">
-                        <button 
-                            type="button" 
-                            class="key"
-                            :class="matchingTileForKey(key)?.status" 
-                            x-text="key"
-                        >
+                        <button type="button" class="key" :class="matchingTileForKey(key)?.status" x-text="key">
                         </button>
                     </template>
                 </div>
