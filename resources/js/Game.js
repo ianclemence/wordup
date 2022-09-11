@@ -9,6 +9,12 @@ export default {
     errors: false,
     message: "",
 
+    letters: [
+        'QWERTYUIOP'.split(''),
+        'ASDFGHJKL'.split(''),
+        ['Enter',...'ZXCVBNM'.split(''),'Backspace'],
+    ],
+
     get currentRow() {
         return this.board[this.currentRowIndex];
     },
