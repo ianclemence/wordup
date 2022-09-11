@@ -1,5 +1,5 @@
 import Tile from "./Tile";
-import {allWords, secretWords} from "./words3";
+import { allWords, secretWords } from "./words3";
 
 export default {
     guessesAllowed: 4,
