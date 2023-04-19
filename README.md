@@ -1,4 +1,4 @@
-# Wordup Documentation
+# Wordup
 
 This repository contains the source code for Wordup, a web-based game where players try to guess a secret three-letter word within five tries. The game provides feedback on the player's guess, indicating which letters are correct and in the correct position, and which letters are correct but in the wrong position.
 
@@ -42,7 +42,7 @@ To run Wordup locally, follow these steps:
 
 ## Support
 
-If you have any questions or issues with Wordup, please create an issue.
+If you have any questions or issues with Wordup, please contact me.
 
 ## License
 
