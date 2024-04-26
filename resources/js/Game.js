@@ -3,7 +3,7 @@ import { allWords, secretWords } from "./words3";
 
 export default {
     guessesAllowed: 4,
-    theWord: secretWords[Math.floor(Math.random() * secretWords.length)], // specifis words
+    theWord: secretWords[Math.floor(Math.random() * secretWords.length)], // specific words
     // theWord: allWords[Math.floor(Math.random() * allWords.length)], // random words
     currentRowIndex: 0,
     state: "active", // pending, active, complete
