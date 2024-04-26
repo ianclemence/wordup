@@ -139,6 +139,7 @@ output:empty {
 
 #keyboard {
     margin: 2rem 0;
+    display: grid;
 }
 
 .key {
@@ -148,4 +149,12 @@ output:empty {
     height: 50px;
     min-width: 40px;
     margin: 2px;
+}
+
+@media screen and (max-width: 600px) {
+    .key {
+        height: 50px;
+        min-width: 32px;
+        font-size: 14px;
+    }
 }
