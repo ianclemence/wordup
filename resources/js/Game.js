@@ -1,9 +1,9 @@
 import Tile from "./Tile";
-import { allWords, secretWords } from "./words3";
+import { secretWord } from "./words3";
 
 export default {
     guessesAllowed: 4,
-    theWord: secretWords[Math.floor(Math.random() * secretWords.length)], // specific words
+    theWord: secretWord, // specific words
     // theWord: allWords[Math.floor(Math.random() * allWords.length)], // random words
     currentRowIndex: 0,
     state: "active", // pending, active, complete
@@ -86,21 +86,6 @@ export default {
             // then return
             return;
         }
-
-        if (!allWords.includes(this.currentGuess.toUpperCase())) {
-            this.errors = true;
-
-            this.message = "Not a Word";
-
-            return;
-        }
-
-        // Using a dictionary API
-        // if (await this.checkDictionary(this.currentGuess)) {
-        //     this.errors = true;
-
-        //     return this.message = "Not a Word";
-        // }
 
         // Update the tile colors
         Tile.updateStatusesForRow(this.currentRow, this.theWord);
