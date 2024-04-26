@@ -18,12 +18,27 @@
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
-<body>
-    <main x-data="game" @keyup.window="onKeyPress($event.key)">
-        <h1>
+<body class="font-sans antialiased text-gray-900 bg-[#0e1626] grid">
+    <main class="h-full flex flex-col items-center mx-auto max-w-screen-xl" x-data="game" @keyup.window="onKeyPress($event.key)">
+        <h1 class="mt-6 text-center text-4xl font-bold tracking-tight text-white sm:text-5xl">
             WordUp
         </h1>
+
+        {{-- Instructions --}}
+        <div class="w-full sm:max-w-md px-6 py-4 text-sm text-white">
+            <ul>
+                <li class="mb-2">
+                    🟢 : a perfect match.
+                </li>
+                <li class="mb-2">
+                    🟡 : the letter is present in the word but in the wrong tile.
+                </li>
+            </ul>
+        </div>
+
         <output x-text="message"></output>
+
+        {{-- Game components --}}
         <div id="game">
             <template x-for="(row, index) in board">
                 <div class="row"
@@ -35,6 +50,7 @@
             </template>
         </div>
 
+        {{-- Keyboard components --}}
         <div id="keyboard" @click.stop="$event.target.matches('button') && onKeyPress($event.target.textContent)">
             <template x-for="row in letters">
                 <div class="row">
