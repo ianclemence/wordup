@@ -16,5 +16,3 @@ function generateSecretWord() {
 
 // Generate the secret word for the day
 export const secretWord = generateSecretWord()[0];
-
-console.log(secretWord);
