@@ -33,7 +33,7 @@
 
             {{-- content --}}
             <h1 class="text-center text-3xl sm:text-4xl text-gray-900 dark:text-white">
-                How to Play to Word Up!
+                How to Play Word Up!
             </h1>
 
             <p class="mx-auto mt-4 mb-8 max-w-md text-center text-lg text-gray-500 dark:text-gray-300">
