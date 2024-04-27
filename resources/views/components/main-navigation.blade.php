@@ -82,7 +82,7 @@
                 <li><strong class="text-[#f7f749] text-2xl"> Y </strong> is in the word but in the wrong position.</li>
             </ul>
 
-            <p class="text-center text-2xl sm:text-3xl">
+            <p class="text-center text-1xl sm:text-2xl">
                 Good Luck, Have Fun! ✨
             </p>
         </div>

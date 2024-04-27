@@ -91,13 +91,13 @@ export default {
 
         if (this.currentGuess === this.theWord) {
             this.state = "complete";
-            this.message = "You Win!";
+            this.message = "🎉 You Win! 🎉";
         } else if (this.remainingGuesses === 0) {
             this.state = "complete";
-            this.message = `Game Over. You Lose! (${this.theWord})`;
+            this.message = `😔 Game Over. You Lose! (${this.theWord.toUpperCase()}) 😔`;
         } else {
             this.currentRowIndex++;
-            this.message = "Incorrect!";
+            this.message = "❌ Incorrect! ❌";
         }
     },
 };
