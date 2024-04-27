@@ -22,7 +22,7 @@
             x-transition:enter-end="opacity-100 scale-100">
 
             {{-- close modal button --}}
-            <div class="absolute top-4 end-4 ">
+            <div class="absolute top-4 end-4">
                 <button type="button"
                     class="relative flex items-center justify-center rounded-lg outline-none transition duration-75 focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-70 -m-1.5 h-9 w-9 text-gray-400 hover:text-gray-500 focus-visible:ring-primary-600 dark:text-gray-500 dark:hover:text-gray-400 dark:focus-visible:ring-primary-500"
                     @click="instructions = false">
@@ -37,7 +37,7 @@
             </h1>
 
             <p class="mx-auto my-4 max-w-md text-center text-lg">
-                Guess today's mystery word within <strong class="font-bold"> four </strong> guesses.
+                Guess today's mystery word within <strong class="font-bold"> FIVE </strong> guesses.
             </p>
 
             <ul class="mx-auto max-w-md text-start text-sm space-y-1 list-disc ml-5">

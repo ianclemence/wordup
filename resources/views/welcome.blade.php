@@ -33,7 +33,7 @@
                         <div class="row"
                             :class="{ 'current': currentRowIndex === index, 'invalid': currentRowIndex === index && errors }">
                             <template x-for="tile in row">
-                                <div class="tile" :class="tile.status" x-text="tile.letter"></div>
+                                <div class="tile h-24 sm:h-16" :class="tile.status" x-text="tile.letter"></div>
                             </template>
                         </div>
                     </template>
