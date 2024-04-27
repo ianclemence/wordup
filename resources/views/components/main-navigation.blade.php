@@ -1,4 +1,4 @@
-<div class="flex flex-row items-center justify-between mb-6" x-data="{ instructions: false }">
+<div class="flex flex-row items-center justify-between mb-6" x-data="{ instructions: true }">
     <div class="hidden"></div>
 
     <a href="/" wire:navigate>
@@ -17,7 +17,7 @@
         x-show="instructions" @click.away="instructions = false" x-cloak>
 
         {{-- modal inner --}}
-        <div class="relative max-w-2xl rounded-lg bg-gray-100 px-4 py-16 sm:px-6 lg:px-8 shadow-xl ring-1 ring-gray-950/5 dark:bg-gray-900 dark:ring-white/10"
+        <div class="relative max-w-2xl rounded-lg bg-gray-100 px-4 py-16 sm:px-6 lg:px-8 shadow-xl dark:bg-gray-900"
             x-transition:enter="motion-safe:ease-out duration-300"
             x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100">
 
@@ -33,11 +33,11 @@
 
             {{-- content --}}
             <h1 class="text-center text-3xl sm:text-4xl text-gray-900 dark:text-white">
-                How to Play Word Up!
+                How to Play WordUp
             </h1>
 
             <p class="mx-auto mt-4 mb-8 max-w-md text-center text-lg text-gray-500 dark:text-gray-300">
-                Guess today's mystery word within <strong> four </strong> guesses.
+                Guess today's mystery word within <strong  class="text-gray-900 dark:text-white"> four </strong> guesses.
             </p>
 
             <ul class="mx-auto mt-4 mb-8 max-w-md text-start text-base text-gray-500 dark:text-gray-300 space-y-5">
