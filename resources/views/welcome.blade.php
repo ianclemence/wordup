@@ -20,7 +20,7 @@
 
 <body class="font-sans antialiased text-gray-900 bg-[#0e1626] grid">
     <div class="min-h-screen flex flex-col justify-center items-center pt-6">
-        <div class="w-full sm:max-w-md mt-6 px-6 py-4">
+        <div class="w-full sm:max-w-2xl mt-6 px-6 py-4">
 
             {{-- Navigation components --}}
             <x-main-navigation />
