@@ -1,32 +1,12 @@
-/* @tailwind base;
+@tailwind base;
 @tailwind components;
-@tailwind utilities; */
+@tailwind utilities;
 
 :root {
     --correct-color: #47d747;
     --present-color: #f7f749;
     --absent-color: #888;
     --invalid-color: #ff3f3f;
-}
-
-html,
-body {
-    height: 100%;
-}
-
-body {
-    display: grid;
-    place-items: center;
-    background-color: #0e1626;
-    color: white;
-    margin: 0;
-    font-family: Poppins, sans-serif;
-}
-
-h1 {
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: 1.5rem;
 }
 
 #game {
@@ -104,57 +84,4 @@ h1 {
 
 .key.absent {
     background: var(--absent-color);
-}
-
-header {
-    position: relative;
-}
-
-output {
-    text-align: center;
-    display: block;
-    font-weight: 500;
-    font-size: 20px;
-    margin-top: 1rem;
-    position: fixed;
-    inset: auto 0 3rem 0;
-}
-
-/* output {
-    display: block;
-    font-weight: 500;
-    font-style: italic;
-    font-size: 17px;
-    margin-top: 1rem;
-    position: absolute;
-    top: 0;
-    right: -5.5rem;
-    width: 150px;
-} */
-
-output:empty {
-    display: none;
-    color: #496e9e;
-}
-
-#keyboard {
-    margin: 2rem 0;
-    display: grid;
-}
-
-.key {
-    background: #c5c5c5;
-    border: 0;
-    border-radius: 4px;
-    height: 50px;
-    min-width: 40px;
-    margin: 2px;
-}
-
-@media screen and (max-width: 600px) {
-    .key {
-        height: 50px;
-        min-width: 32px;
-        font-size: 14px;
-    }
 }
