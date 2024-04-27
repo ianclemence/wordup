@@ -14,19 +14,24 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    {{-- AlpineJS --}}
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    @livewireStyles
 </head>
 
 <body class="font-sans antialiased text-gray-900 bg-[#0e1626] grid">
     <div class="min-h-screen flex flex-col justify-center items-center pt-6">
-        <div>
-            <a href="/" wire:navigate>
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </div>
+        <div class="w-full sm:max-w-md mt-6 px-6 py-4">
 
-        <div class="w-full sm:max-w-md mt-6 px-6 py-4 sm:rounded-lg">
+            {{-- Navigation components --}}
+            <div class="flex flex-row items-center justify-between mb-6">
+                <a href="/" wire:navigate>
+                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                </a>
+                <a href="/" wire:navigate>
+                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                </a>
+            </div>
+
             <div x-data="game" @keyup.window="onKeyPress($event.key)">
 
                 {{-- Game components --}}
@@ -59,6 +64,8 @@
             </div>
         </div>
     </div>
+
+    @livewireScripts
 </body>
 
 </html>
