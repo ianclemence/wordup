@@ -1,7 +1,7 @@
 <div class="flex flex-row items-center justify-between mb-6" x-data="{ instructions: true }">
     <div class="hidden"></div>
 
-    <a href="/" wire:navigate>
+    <a href="/">
         <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
     </a>
 
