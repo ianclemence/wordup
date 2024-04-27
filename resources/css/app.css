@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+[x-cloak] {
+    display: none !important;
+}
+
 :root {
     --correct-color: #47d747;
     --present-color: #f7f749;

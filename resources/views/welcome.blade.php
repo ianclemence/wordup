@@ -23,14 +23,7 @@
         <div class="w-full sm:max-w-md mt-6 px-6 py-4">
 
             {{-- Navigation components --}}
-            <div class="flex flex-row items-center justify-between mb-6">
-                <a href="/" wire:navigate>
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                </a>
-                <a href="/" wire:navigate>
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                </a>
-            </div>
+            <x-main-navigation />
 
             <div x-data="game" @keyup.window="onKeyPress($event.key)">
 
@@ -47,12 +40,13 @@
                 </div>
 
                 {{-- Keyboard components --}}
-                <div class="mt-8 space-y-3" @click.stop="$event.target.matches('button') && onKeyPress($event.target.textContent)">
+                <div class="mt-8 space-y-3"
+                    @click.stop="$event.target.matches('button') && onKeyPress($event.target.textContent)">
                     <template x-for="row in letters">
                         <div class="flex justify-center">
                             <template x-for="key in row">
-                                <button type="button" class="key bg-[#c5c5c5] border-0 rounded h-12 px-4 mx-0.5" :class="matchingTileForKey(key)?.status"
-                                    x-text="key">
+                                <button type="button" class="key bg-[#c5c5c5] border-0 rounded h-12 px-4 mx-0.5"
+                                    :class="matchingTileForKey(key)?.status" x-text="key">
                                 </button>
                             </template>
                         </div>
