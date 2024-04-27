@@ -8,7 +8,7 @@
     <button type="button"
         class="relative flex items-center justify-center rounded-lg outline-none transition duration-75 focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-70 -m-1.5 h-9 w-9 text-gray-400 hover:text-gray-500 focus-visible:ring-primary-600 dark:text-gray-500 dark:hover:text-gray-400 dark:focus-visible:ring-primary-500"
         @click="instructions = !instructions">
-        <span class="sr-only">Close</span>
+        <span class="sr-only">Instructions</span>
         <x-heroicon-o-question-mark-circle class="w-20 h-20" />
     </button>
 
