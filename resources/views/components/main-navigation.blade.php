@@ -49,7 +49,7 @@
                 Examples:
             </p>
 
-            <ul class="mx-auto my-4 max-w-md text-start text-sm space-y-3">
+            <ul class="mx-auto my-6 max-w-md text-start text-sm space-y-3">
                 <li class="space-x-3">
                     <button type="button" class="inline-block rounded border p-3 text-1xl font-medium">
                         C
@@ -82,9 +82,9 @@
                 <li><strong class="text-[#f7f749] text-2xl"> Y </strong> is in the word but in the wrong position.</li>
             </ul>
 
-            <div class="flex flex-col items-center">
-                <x-primary-button type="button" @click="instructions = false"> Start Game </x-primary-button>
-            </div>
+            <h1 class="text-center text-2xl sm:text-3xl">
+                Good Luck, Have Fun! ✨
+            </h1>
         </div>
     </div>
 </div>
