@@ -52,7 +52,7 @@ export default {
         // Validation
         if (/^[A-z]$/.test(key)) {
             this.fillTile(key);
-        } else if (key === "Backspace") {
+        } else if (key === "Backspace" && this.state !== "complete") {
             this.emptyTile();
         } else if (key === "Enter") {
             this.submitGuess();
@@ -79,7 +79,6 @@ export default {
         }
     },
 
-    // async submitGuess() {
     submitGuess() {
         // if the guess length is less than the guess of the word
         if (this.currentGuess.length < this.theWord.length) {
