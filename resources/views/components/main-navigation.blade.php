@@ -49,7 +49,7 @@
                 Examples:
             </p>
 
-            <ul class="mx-auto my-6 max-w-md text-start text-sm space-y-3">
+            <ul class="mx-auto my-6 max-w-md text-start text-1xl space-y-3">
                 <li class="space-x-3">
                     <button type="button" class="inline-block rounded border p-3 text-1xl font-medium">
                         C

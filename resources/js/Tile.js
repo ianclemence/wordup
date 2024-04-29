@@ -1,34 +1,36 @@
 export default class Tile {
-    letter = "";
-    status = ""; // correct, present, absent
-
-    constructor(position) {
+    constructor(letter = "", position) {
         this.position = position;
+        this.letter = letter;
+        this.status = ""; // correct, present, absent
     }
 
     static updateStatusesForRow(row, theWord) {
-        theWord = theWord.split(""); // ['c', 'a', 't']
-        // check for correct letters
+        const wordArray = theWord.split(""); // Convert theWord to an array of characters
+
+        // Check for correct letters
         for (let tile of row) {
-            if (theWord[tile.position] === tile.letter) {
+            if (wordArray[tile.position] === tile.letter) {
                 tile.status = "correct";
-
-                theWord[tile.position] = null;
+                wordArray[tile.position] = null; // Mark the letter as found in the word array
             }
         }
 
-        // check for present letters
+        // Check for present letters
         for (let tile of row) {
-            if (theWord.includes(tile.letter)) {
+            const indexInWord = wordArray.indexOf(tile.letter);
+            if (indexInWord !== -1) {
                 tile.status = "present";
-
-                theWord[theWord.indexOf(tile.letter)] = null;
+                wordArray[indexInWord] = null; // Mark the letter as found in the word array
             }
         }
 
-        // anything that remains is absent
-        for (let tile of row.filter((tile) => !tile.status)) {
-            tile.status = "absent";
+        // Anything that remains in the word array is absent
+        for (let letter of wordArray.filter((letter) => letter !== null)) {
+            const tile = row.find((tile) => tile.letter === letter);
+            if (tile) {
+                tile.status = "absent";
+            }
         }
     }
 
