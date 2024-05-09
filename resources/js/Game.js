@@ -7,8 +7,6 @@ function getCurrentDate() {
     return `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
 }
 
-console.log(localStorage);
-
 // Exporting an object with properties and methods related to the game
 export default {
     // Number of guesses allowed
