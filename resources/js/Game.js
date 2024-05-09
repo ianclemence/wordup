@@ -1,6 +1,14 @@
 import Tile from "./Tile";
 import { secretWord } from "./Words";
 
+// Function to get the current date in the format YYYY-MM-DD
+function getCurrentDate() {
+    const now = new Date();
+    return `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
+}
+
+console.log(localStorage);
+
 // Exporting an object with properties and methods related to the game
 export default {
     // Number of guesses allowed
@@ -40,59 +48,85 @@ export default {
 
     // Method to initialize the game board with tiles
     init() {
-        // localStorage.clear()
-        // Retrieve saved game state from localStorage
-        const savedGame = localStorage.getItem("savedGame");
-        const savedState = localStorage.getItem("savedState");
-        const savedRows = JSON.parse(localStorage.getItem("savedRows")) || [];
-        const savedRowIndex = localStorage.getItem("savedRowIndex");
+        const currentDate = getCurrentDate();
+        const savedDate = localStorage.getItem("gameDate");
+        const savedWord = localStorage.getItem("secretWord");
 
-        if (savedGame) {
-            // Parse the saved game and assign it to the game board
-            this.board = JSON.parse(savedGame);
+        if (savedDate === currentDate && savedWord) {
+            this.theWord = savedWord;
 
-            // Restore the current game state
-            this.state = savedState ? savedState : "active";
+            // Retrieve saved game state from localStorage
+            const savedGame = localStorage.getItem("savedGame");
+            const savedState = localStorage.getItem("savedState");
+            const savedRows =
+                JSON.parse(localStorage.getItem("savedRows")) || [];
+            const savedRowIndex = localStorage.getItem("savedRowIndex");
 
-            // Restore the current row index from localStorage
-            this.currentRowIndex = savedRowIndex ? parseInt(savedRowIndex) : 0;
+            if (savedGame) {
+                // Parse the saved game and assign it to the game board
+                this.board = JSON.parse(savedGame);
 
-            savedRows.forEach((row, rowIndex) => {
-                row.forEach((tileData, tileIndex) => {
-                    // Calculate the position based on the row and tile index
-                    const position = tileIndex;
+                // Restore the current game state
+                this.state = savedState ? savedState : "active";
 
-                    // Create a new Tile instance from the saved data
-                    const newTile = new Tile(tileData.letter, position);
+                // Restore the current row index from localStorage
+                this.currentRowIndex = savedRowIndex
+                    ? parseInt(savedRowIndex)
+                    : 0;
 
-                    // Update the corresponding Tile instance in this.board
-                    this.board[rowIndex][tileIndex] = newTile;
+                savedRows.forEach((row, rowIndex) => {
+                    row.forEach((tileData, tileIndex) => {
+                        // Calculate the position based on the row and tile index
+                        const position = tileIndex;
+
+                        // Create a new Tile instance from the saved data
+                        const newTile = new Tile(tileData.letter, position);
+
+                        // Update the corresponding Tile instance in this.board
+                        this.board[rowIndex][tileIndex] = newTile;
+                    });
+
+                    // Call the static method updateStatusesForRow with the updated row
+                    Tile.updateStatusesForRow(
+                        this.board[rowIndex],
+                        this.theWord
+                    );
                 });
 
-                // Call the static method updateStatusesForRow with the updated row
-                Tile.updateStatusesForRow(this.board[rowIndex], this.theWord);
-            });
-
-            if (savedState === "complete") {
-                if (this.currentGuess === this.theWord) {
-                    this.message = "🎉 Congrats! You've won WordUp! 🎉";
+                if (savedState === "complete") {
+                    if (this.currentGuess === this.theWord) {
+                        this.message = "🎉 Congrats! You've won WordUp! 🎉";
+                    } else {
+                        this.message = `😔 Oops...You lost! The word was: ${this.theWord.toUpperCase()} 😔`;
+                    }
                 } else {
-                    this.message = `😔 Oops...You lost! The word was: ${this.theWord.toUpperCase()} 😔`;
+                    // If the game is not complete, restore the board with saved guesses
+                    this.board = this.board.map((row, rowIndex) =>
+                        row.map((tile, tileIndex) => {
+                            const newTile = new Tile(tile.letter, tileIndex);
+                            // Set the status of the new Tile based on the corresponding Tile in the saved game
+                            newTile.status = tile.status;
+                            return newTile;
+                        })
+                    );
                 }
             } else {
-                // If the game is not complete, restore the board with saved guesses
-                this.board = this.board.map((row, rowIndex) =>
-                    row.map((tile, tileIndex) => {
-                        const newTile = new Tile(tile.letter, tileIndex);
-                        // Set the status of the new Tile based on the corresponding Tile in the saved game
-                        newTile.status = tile.status;
-                        return newTile;
-                    })
-                );
-
-                console.log(this.board);
+                this.board = Array.from({ length: this.guessesAllowed }, () => {
+                    return Array.from(
+                        { length: this.theWord.length },
+                        (item, index) => new Tile(item, index)
+                    );
+                });
             }
         } else {
+            // Clear local storage
+            localStorage.clear();
+            // Generate a new word for the day
+            this.theWord = secretWord;
+            // Save the new word and date in localStorage
+            localStorage.setItem("gameDate", currentDate);
+            localStorage.setItem("secretWord", this.theWord);
+
             this.board = Array.from({ length: this.guessesAllowed }, () => {
                 return Array.from(
                     { length: this.theWord.length },
