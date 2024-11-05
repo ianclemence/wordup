@@ -11,7 +11,7 @@ function generateSecretWord() {
 
     // Take the first word generated using the hash as the secret word
     const secretWordIndex = parseInt(hashedSecret.substring(0, 8), 16) % 10; // Ensure the index is within the range of the word list
-    return generate({ exactly: 1, minLength: 4, maxLength: 4, seed:hashedSecret }); // Generate a single secret word using the hash as seed
+    return generate({ exactly: 1, minLength: 4, maxLength: 4 }); // Generate a single secret word using the hash as seed
 }
 
 // Generate the secret word for the day
