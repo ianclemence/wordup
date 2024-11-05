@@ -65,6 +65,14 @@
                         Get a Hint
                     </button>
                 </div>
+
+                <!-- Add this section in welcome.blade.php to display the leaderboard -->
+                <div class="mt-6">
+                    <h2 class="text-white text-2xl mb-4">Leaderboard</h2>
+                    <ul id="leaderboard" class="text-white">
+                        <!-- Leaderboard entries will be populated here -->
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

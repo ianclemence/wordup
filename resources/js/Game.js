@@ -1,5 +1,6 @@
 import Tile from "./Tile";
 import { secretWord } from "./Words";
+import Leaderboard from "./Leaderboard"; // Import the Leaderboard class
 
 // Function to get the current date in the format YYYY-MM-DD
 function getCurrentDate() {
@@ -134,6 +135,21 @@ export default {
                 );
             });
         }
+
+        this.displayLeaderboard(); // Call to display the leaderboard
+    },
+
+    displayLeaderboard() {
+        const scores = Leaderboard.getScores(); // Get scores from the leaderboard
+        const leaderboardElement = document.getElementById('leaderboard');
+        leaderboardElement.innerHTML = ''; // Clear existing entries
+
+        // Populate the leaderboard
+        scores.forEach(score => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `${score.playerName} - ${score.guessesTaken} guesses on ${score.date}`;
+            leaderboardElement.appendChild(listItem);
+        });
     },
 
     // Save the current game to localStorage
@@ -221,6 +237,10 @@ export default {
         if (this.currentGuess === this.theWord) {
             this.state = "complete";
             this.message = "🎉 Congrats! You've won WordUp! 🎉";
+
+            // Save the player's score
+            const playerName = prompt("Enter your name for the leaderboard:"); // Prompt for player name
+            Leaderboard.saveScore(playerName, this.currentRowIndex + 1); // Save score with guesses taken
         } else if (this.remainingGuesses === 0) {
             // If no remaining guesses, game over
             this.state = "complete";
