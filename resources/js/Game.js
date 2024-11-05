@@ -48,6 +48,24 @@ export default {
 
     // Method to initialize the game board with tiles
     init() {
+        const difficulty = document.getElementById('difficulty').value; // Get selected difficulty
+
+        // Set guessesAllowed and theWord length based on difficulty
+        switch (difficulty) {
+            case 'easy':
+                this.guessesAllowed = 7;
+                this.theWord = this.generateWord(4); // 4-letter word
+                break;
+            case 'medium':
+                this.guessesAllowed = 5;
+                this.theWord = this.generateWord(5); // 5-letter word
+                break;
+            case 'hard':
+                this.guessesAllowed = 3;
+                this.theWord = this.generateWord(6); // 6-letter word
+                break;
+        }
+
         localStorage.clear();
         const currentDate = getCurrentDate();
         const savedDate = localStorage.getItem("gameDate");
@@ -122,8 +140,6 @@ export default {
         } else {
             // Clear local storage
             localStorage.clear();
-            // Generate a new word for the day
-            this.theWord = secretWord;
             // Save the new word and date in localStorage
             localStorage.setItem("gameDate", currentDate);
             localStorage.setItem("secretWord", this.theWord);
@@ -137,6 +153,13 @@ export default {
         }
 
         this.displayLeaderboard(); // Call to display the leaderboard
+    },
+
+    // Method to generate a random word of a specific length
+    generateWord(length) {
+        // You can implement your own logic to generate a word of the specified length
+        // For example, you could use a predefined list of words or a random word generator
+        return secretWord; // Placeholder: replace with actual word generation logic
     },
 
     displayLeaderboard() {

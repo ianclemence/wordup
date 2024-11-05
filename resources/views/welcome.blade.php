@@ -73,6 +73,16 @@
                         <!-- Leaderboard entries will be populated here -->
                     </ul>
                 </div>
+
+                <!-- Add this section in welcome.blade.php to select difficulty -->
+                <div class="mt-4">
+                    <label for="difficulty" class="text-white">Select Difficulty:</label>
+                    <select id="difficulty" class="bg-gray-800 text-white rounded px-2 py-1">
+                        <option value="easy">Easy (7 guesses, 4 letters)</option>
+                        <option value="medium" selected>Medium (5 guesses, 5 letters)</option>
+                        <option value="hard">Hard (3 guesses, 6 letters)</option>
+                    </select>
+                </div>
             </div>
         </div>
     </div>
