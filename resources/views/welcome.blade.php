@@ -55,6 +55,16 @@
 
                 {{-- Output --}}
                 <div class="text-white justify-center flex font-medium text-xl mt-4" x-text="message"></div>
+
+                <!-- Add this button inside the game area in welcome.blade.php -->
+                <div class="mt-4">
+                    <button @click="getHint()"
+                            :disabled="hintUsed"
+                            class="bg-blue-500 text-white rounded px-4 py-2"
+                            :class="{'opacity-50 cursor-not-allowed': hintUsed}">
+                        Get a Hint
+                    </button>
+                </div>
             </div>
         </div>
     </div>

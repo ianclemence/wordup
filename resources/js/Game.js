@@ -21,6 +21,7 @@ export default {
     errors: false,
     // Message to display to the player
     message: "",
+    hintUsed: false, // New property to track if the hint has been used
 
     // Keyboard layout: array of arrays representing rows of keys
     letters: [
@@ -46,6 +47,7 @@ export default {
 
     // Method to initialize the game board with tiles
     init() {
+        localStorage.clear();
         const currentDate = getCurrentDate();
         const savedDate = localStorage.getItem("gameDate");
         const savedWord = localStorage.getItem("secretWord");
@@ -230,5 +232,24 @@ export default {
         }
 
         this.saveGame(row);
+    },
+
+    // Method to generate a hint by revealing one letter of the secret word
+    getHint() {
+        if (this.hintUsed) {
+            this.message = "You have already used your hint!";
+            return; // Prevent further hints if already used
+        }
+
+        const revealedLetters = this.currentRow.map(tile => tile.letter); // Get letters already guessed
+        const lettersToReveal = this.theWord.split('').filter(letter => !revealedLetters.includes(letter)); // Filter out already guessed letters
+
+        if (lettersToReveal.length > 0) {
+            const randomLetter = lettersToReveal[Math.floor(Math.random() * lettersToReveal.length)]; // Randomly select a letter to reveal
+            this.message = `Hint: One of the letters is "${randomLetter}".`;
+            this.hintUsed = true; // Mark hint as used
+        } else {
+            this.message = "No more hints available!";
+        }
     },
 };
